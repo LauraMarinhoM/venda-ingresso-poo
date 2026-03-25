@@ -6,6 +6,7 @@
 package venda_ingresso.services;
 
 import venda_ingresso.entities.Ingresso;
+import venda_ingresso.enums.SetorEnum;
 import venda_ingresso.exceptions.SetorEsgotadoException;
 import java.util.ArrayList;
 
@@ -22,24 +23,29 @@ public class GerenciadorIngresso {
         ingressos = new ArrayList<>();
     }
 
-    public boolean comprarIngresso(Ingresso ingresso) {
-        // R09: Limite de 10 por setor
+    public synchronized boolean comprarIngresso(Ingresso ingresso) {
+
+        SetorEnum setorEnum = null;
+        for (SetorEnum s : SetorEnum.values()) {
+            if (s.getNome().equalsIgnoreCase(ingresso.getSetor())) {
+                setorEnum = s;
+                break;
+            }
+        }
+
+
         long count = ingressos.stream()
                 .filter(i -> i.getSetor().equals(ingresso.getSetor()))
                 .count();
 
-        if (count >= 10) {
+        if (setorEnum != null && count >= setorEnum.getLimiteIngressos()) {
             throw new SetorEsgotadoException("Setor " + ingresso.getSetor() + " esgotado!");
         }
+
+        ingresso.setThreadOrigem(Thread.currentThread().getName());
 
         ingresso.setCodigo(++prox);
         return ingressos.add(ingresso);
     }
 
-    public ArrayList<Ingresso> getIngressos() { return ingressos; }
-
-    public void setIngressos(ArrayList<Ingresso> ingressos) {
-        this.ingressos = ingressos;
-        this.prox = ingressos.size();
-    }
 }

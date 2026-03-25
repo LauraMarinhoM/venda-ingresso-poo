@@ -26,6 +26,7 @@ public class Ingresso implements Serializable {
     private double valorTotal;
     private String dataHora;
     private boolean meiaEntrada;
+    private transient String threadOrigem;
 
     public boolean isMeiaEntrada() {
         return meiaEntrada;
@@ -103,6 +104,14 @@ public class Ingresso implements Serializable {
         String horaFormatada = formatterHora.format(dataHora);
         
         this.dataHora = dataFormatada + ' ' + horaFormatada;
+    }
+
+    public String getThreadOrigem() {
+        return threadOrigem;
+    }
+
+    public void setThreadOrigem(String threadOrigem) {
+        this.threadOrigem = threadOrigem;
     }
     
 
