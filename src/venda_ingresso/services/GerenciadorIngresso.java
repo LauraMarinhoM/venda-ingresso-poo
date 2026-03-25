@@ -53,4 +53,7 @@ public class GerenciadorIngresso {
         return new ArrayList<>(this.ingressos);
     }
 
+    public void setIngressos(ArrayList<Ingresso> ingressos) {
+        this.ingressos = ingressos;
+    }
 }

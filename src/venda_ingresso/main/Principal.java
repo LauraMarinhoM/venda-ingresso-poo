@@ -26,7 +26,7 @@ public class Principal {
             try {
                 while (true) {
                     // Serializa a lista atual de ingressos
-                    GerenciadorArquivo.serializar(gerenciador.getIngressos(), "ingressos.ser");
+                    GerenciadorArquivo.serializar(gerenciador.getIngressos(), "ingressos.txt");
                     Thread.sleep(500); // Aguarda 500ms
                 }
             } catch (InterruptedException e) {

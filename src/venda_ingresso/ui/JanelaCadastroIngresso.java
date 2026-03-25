@@ -43,7 +43,7 @@ public class JanelaCadastroIngresso extends JDialog {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                GerenciadorArquivo.serializar(gerenciador.getIngressos(), "ingressos.ser");
+                GerenciadorArquivo.serializar(gerenciador.getIngressos(), "ingressos.txt");
             }
         });
     }
@@ -101,7 +101,7 @@ public class JanelaCadastroIngresso extends JDialog {
             if (gerenciador.comprarIngresso(novo)) {
                 JOptionPane.showMessageDialog(this, "Venda realizada com sucesso!\nValor Total: R$ " + novo.getValorTotal());
 
-                GerenciadorArquivo.serializar(gerenciador.getIngressos(), "ingressos.ser");
+                GerenciadorArquivo.serializar(gerenciador.getIngressos(), "ingressos.txt");
                 dispose();
             }
 

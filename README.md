@@ -26,7 +26,7 @@ Este sistema é um simulador de venda de ingressos desenvolvido para a disciplin
    O sistema gerencia múltiplos compradores (threads) tentando acessar e modificar a lista de ingressos ao mesmo tempo. Para evitar condições de corrida, utilizamos a palavra-chave "synchronized" no método "comprarIngresso()". Isso garante que apenas uma thread possa vender um ingresso por vez. Também utilizamos o método "join()" para aguardar as threads finalizarem e criamos uma Thread Daemon que roda em segundo plano.
 
 2. Serialização (Persistência de Dados)
-   A serialização foi utilizada para salvar o estado da lista de ingressos em um arquivo binário (ingressos.ser), permitindo que os dados sejam recuperados no futuro. Na classe Ingresso, utilizamos o modificador "transient" no atributo "threadOrigem" (ex: private transient String threadOrigem;). Isso garante que essa informação volátil da execução atual não seja gravada no disco.
+   A serialização foi utilizada para salvar o estado da lista de ingressos em um arquivo binário (ingressos.txt), permitindo que os dados sejam recuperados no futuro. Na classe Ingresso, utilizamos o modificador "transient" no atributo "threadOrigem" (ex: private transient String threadOrigem;). Isso garante que essa informação volátil da execução atual não seja gravada no disco.
 
 ## Branches
 * main: Branch principal contendo o código final consolidado e estável.

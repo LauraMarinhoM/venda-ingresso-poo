@@ -27,7 +27,7 @@ public class TelaInicial extends JFrame {
         this.gerenciador = new GerenciadorIngresso();
 
 
-        List<Ingresso> listaCarregada = GerenciadorArquivo.desserializar("ingressos.ser");
+        List<Ingresso> listaCarregada = GerenciadorArquivo.desserializar("ingressos.txt");
         if (listaCarregada != null && !listaCarregada.isEmpty()) {
             this.gerenciador.setIngressos(new ArrayList<>(listaCarregada));
         }
