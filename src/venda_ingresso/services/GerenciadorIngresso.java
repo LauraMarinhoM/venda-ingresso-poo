@@ -7,6 +7,7 @@ package venda_ingresso.services;
 
 import venda_ingresso.entities.Ingresso;
 import venda_ingresso.enums.SetorEnum;
+import venda_ingresso.exceptions.IngressoInexistenteException;
 import venda_ingresso.exceptions.SetorEsgotadoException;
 import java.util.ArrayList;
 
@@ -55,5 +56,15 @@ public class GerenciadorIngresso {
 
     public void setIngressos(ArrayList<Ingresso> ingressos) {
         this.ingressos = ingressos;
+    }
+
+    public Ingresso buscarIngresso(String nome) {
+        // Percorre a lista de ingressos procurando pelo nome
+        for (Ingresso ingresso : ingressos) {
+            if (ingresso.getNome().equalsIgnoreCase(nome)) {
+                return ingresso;
+            }
+        }
+        throw new IngressoInexistenteException("Erro: Nenhum ingresso encontrado no nome de '" + nome + "'.");
     }
 }

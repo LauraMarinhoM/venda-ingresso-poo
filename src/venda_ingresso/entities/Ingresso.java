@@ -5,7 +5,9 @@
  */
 package venda_ingresso.entities;
 
+import venda_ingresso.exceptions.NomeInvalidoException;
 import venda_ingresso.exceptions.QuantidadeInvalidaException;
+import venda_ingresso.exceptions.ValorInvalidoException;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -59,6 +61,9 @@ public class Ingresso implements Serializable {
     }
 
     public void setNome(String nome) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new NomeInvalidoException("Erro: O nome é obrigatório e não pode ficar em branco.");
+        }
         this.nome = nome;
     }
 
@@ -79,6 +84,9 @@ public class Ingresso implements Serializable {
     }
 
     public void setValor(double valor) {
+        if (valor < 0) {
+            throw new ValorInvalidoException("Erro: O valor do ingresso não pode ser negativo.");
+        }
         this.valor = valor;
     }
 
