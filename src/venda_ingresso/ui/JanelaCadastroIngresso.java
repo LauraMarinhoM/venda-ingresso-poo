@@ -101,16 +101,15 @@ public class JanelaCadastroIngresso extends JDialog {
             if (gerenciador.comprarIngresso(novo)) {
                 JOptionPane.showMessageDialog(this, "Venda realizada com sucesso!\nValor Total: R$ " + novo.getValorTotal());
 
-                // R13: Garante o salvamento imediato após sucesso
                 GerenciadorArquivo.serializar(gerenciador.getIngressos(), "ingressos.ser");
                 dispose();
             }
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Erro: A quantidade deve ser um número inteiro válido.");
+            JOptionPane.showMessageDialog(this, "Erro: A quantidade deve ser um número inteiro.");
         } catch (RuntimeException ex) {
-            // Captura QuantidadeInvalidaException e SetorEsgotadoException
-            JOptionPane.showMessageDialog(this, "Atenção: " + ex.getMessage());
+
+            JOptionPane.showMessageDialog(this, "Atenção! " + ex.getMessage());
         }
     }
 }
