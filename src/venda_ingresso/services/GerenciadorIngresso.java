@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class GerenciadorIngresso {
 
     private ArrayList<Ingresso> ingressos;
-    private int prox = 0; // R10: Removido o static
+    private int prox = 0;
 
     public GerenciadorIngresso() {
         ingressos = new ArrayList<>();
@@ -46,6 +46,11 @@ public class GerenciadorIngresso {
 
         ingresso.setCodigo(++prox);
         return ingressos.add(ingresso);
+    }
+
+    public synchronized ArrayList<Ingresso> getIngressos() {
+        // Retorna uma nova lista para evitar erros de modificação concorrente
+        return new ArrayList<>(this.ingressos);
     }
 
 }
