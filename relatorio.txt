@@ -1,0 +1,8 @@
+RELATÓRIO DE VENDAS
+===================
+Cód: 1 | Nome: Laura Marinho | Setor: Azul | Total: R$ 50,00
+Cód: 2 | Nome: Eric Ueda | Setor: Azul | Total: R$ 100,00
+Cód: 3 | Nome: Laura Marinho | Setor: Azul | Total: R$ 200,00
+Cód: 4 | Nome: Isadora  | Setor: Branco | Total: R$ 30,00
+Cód: 5 | Nome: lksdlasdl | Setor: Amarelo | Total: R$ 720,00
+Cód: 6 | Nome: kjhkj | Setor: Amarelo | Total: R$ 180,00
